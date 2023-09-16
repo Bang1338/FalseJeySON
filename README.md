@@ -28,7 +28,7 @@ The goal here is adding `{"` over the encrypted data. When `{"` to base64, it be
 * Step 2: Make binary called `FJKEY`
 
 ```
-46 61 6C 73 65 4A 65 79 53 4F 4E 21 30 31 30 30 - Header: FALSEJEYSON!0100
+46 61 6C 73 65 4A 65 79 53 4F 4E 21 30 31 30 30 - Header: FalseJeySON!0100
 
 04 94 98 5B 0B 14 E4 C3 8B 2E 68 EF 2B 04 30 02 \ AES
 41 F8 32 E4 63 5F F0 84 6A AA 8F 0B 15 15 09 B3 / key
