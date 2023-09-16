@@ -21,6 +21,27 @@ a JSON protection program, powered by AES-256
 ## Why?
 * When you're using JSON for some application with base64, hacker/cracker can easily look into the pattern called `ey` and already know this is JSON without even decoding it.
 
+## How FalseJeySON work?
+The goal here is adding `{"` over the encrypted data. When `{"` to base64, it become `eyJ`
+
+* Step 1: Generate AES key and IV (stored)
+* Step 2: Make binary called `FJKEY`
+
+```
+46 61 6C 73 65 4A 65 79 53 4F 4E 21 30 31 30 30 - Header: FALSEJEYSON!0100
+
+04 94 98 5B 0B 14 E4 C3 8B 2E 68 EF 2B 04 30 02 \ AES
+41 F8 32 E4 63 5F F0 84 6A AA 8F 0B 15 15 09 B3 / key
+
+6C D6 93 57 10 B3 77 16 82 29 6B DC 08 A4 F3 04 \ AES
+36 D7 EB 2D 00 1E A4 65 EC 57 9E E3 43 11 BB 11 / I.V
+```
+
+* Step 3: Encode encrypted data to hex
+* Step 4: Encode data to base64 (using stuff from OpenSSL to make base64)
+* Step 5: Padding data with {"FJ[version]* and then base64
+* The rest: Export
+
 ## Requirement:
 * Visual Studio 2022
 * vcpkg
@@ -33,7 +54,7 @@ a JSON protection program, powered by AES-256
 `vcpkg install nlohmann-json` and `vcpkg install openssl:x86-windows-static`
 * Compile them in VS2022
 
-# How to use?
+## How to use?
 ```
 Usage: FalseJeySON [-e|-d] -i input.json -o output.json [-k key.fjkey]
 -e : Encrypt mode
@@ -85,7 +106,7 @@ Note: To output while decrypt, use `FalseJeySON -d -i 4trans_15-09-23-21-17-47.j
 ```
 
 ## Credit
-- No one, really :(
+- [LiveOverFlow](github.com/LiveOverflow) - for `ey` pattern explain
 
 ## Bonus
 ![image](https://github.com/Bang1338/FalseJeySON/assets/75790567/23b27322-803d-4228-b4da-0da765f985f0)
