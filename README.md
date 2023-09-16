@@ -24,7 +24,7 @@ a JSON protection program, powered by AES-256
 ## How FalseJeySON work?
 The goal here is adding `{"` over the encrypted data. When `{"` to base64, it become `eyJ`
 
-* Step 1: Generate AES key and IV (stored)
+* Step 1: Generate AES-256 key and IV (stored)
 * Step 2: Make binary called `FJKEY`
 
 ```
@@ -45,14 +45,14 @@ The goal here is adding `{"` over the encrypted data. When `{"` to base64, it be
 ## Requirement:
 * Visual Studio 2022
 * vcpkg
-* [nlohmann/json](github.com/nlohmann/json) - 32bit
+* [nlohmann/json](github.com/nlohmann/json) - x86
 * openssl_x86-windows-static
 
 ## How to compile?
 * Install vcpkg
 * Install two of them with:
 `vcpkg install nlohmann-json` and `vcpkg install openssl:x86-windows-static`
-* Compile them in VS2022
+* Compile them in VS2022, in x86.
 
 ## How to use?
 ```
